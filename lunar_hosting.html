@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lunar Hosting - Tu servidor Minecraft</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+    }
+    header {
+      background: #1b1b1b;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #00ff99;
+    }
+    .hero {
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .btn {
+      padding: 12px 24px;
+      background: #00ff99;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #00cc77;
+    }
+    .login-popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+    .login-box {
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ff99;
+      width: 320px;
+      max-width: 90%;
+    }
+    .login-box input {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+    .hidden-access {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 10px;
+      color: #444;
+      cursor: pointer;
+    }
+    /* Planes */
+    .plans-section {
+      padding: 60px 20px;
+      background: #111;
+      text-align: center;
+    }
+    .plans-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+      color: #00ff99;
+    }
+    .plans-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .plan-card {
+      background: #222;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ff99;
+      width: 280px;
+      padding: 30px 20px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
+    .plan-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px #00ff99;
+    }
+    .plan-title {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #00ff99;
+    }
+    .plan-details {
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .plan-price {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #00ff99;
+      margin-bottom: 20px;
+    }
+    .plan-cta {
+      margin-top: auto;
+    }
+    .plan-cta button {
+      width: 100%;
+      background: #00ff99;
+      border: none;
+      padding: 12px 0;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .plan-cta button:hover {
+      background: #00cc77;
+    }
+    @media (max-width: 700px) {
+      .plans-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .plan-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Lunar Hosting</h1>
+  </header>
+
+  <section class="hero">
+    <h2>Tu servidor Minecraft al instante</h2>
+    <p>Rápido, confiable y gratuito. ¡Empieza ya tu aventura!</p>
+    <button class="btn" onclick="showLogin()">INSCRIBIRME</button>
+  </section>
+
+  <section class="plans-section" id="planes">
+    <h2>Planes</h2>
+    <div class="plans-container">
+      <div class="plan-card">
+        <div class="plan-title">Tierra</div>
+        <div class="plan-details">
+          <ul>
+            <li><strong>16 GB</strong> de RAM</li>
+            <li><strong>Gratis</strong></li>
+            <li>IPs personalizables</li>
+            <li>Servicio 24/7</li>
+          </ul>
+        </div>
+        <div class="plan-price">Gratis</div>
+        <div class="plan-cta">
+          <button onclick="alert('Registro no disponible aún')">Seleccionar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="login-popup" id="loginPopup">
+    <div class="login-box">
+      <h2>Iniciar sesión</h2>
+      <input type="email" placeholder="Correo electrónico" />
+      <input type="password" placeholder="Contraseña" />
+      <button class="btn">Entrar</button>
+    </div>
+  </div>
+
+  <div class="hidden-access" onclick="verifyAccess()">.</div>
+
+  <script>
+    function showLogin() {
+      document.getElementById('loginPopup').style.display = 'flex';
+    }
+    window.onclick = function (event) {
+      if (event.target === document.getElementById('loginPopup')) {
+        document.getElementById('loginPopup').style.display = 'none';
+      }
+    };
+    function verifyAccess() {
+      const code = prompt('Introduce la clave secreta:');
+      if (code === 'keiro2024') {
+        showLogin();
+      } else {
+        alert('Acceso denegado.');
+      }
+    }
+  </script>
+</body>
+</html>
