@@ -223,3 +223,103 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lunar Hosting - Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0f0f0f, #121212);
+      color: #e0e0e0;
+      display: flex;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: #1a1a1a;
+      border-radius: 15px;
+      padding: 30px 40px;
+      max-width: 360px;
+      width: 100%;
+      box-shadow: 0 0 25px #00ff99aa;
+    }
+    h1 {
+      text-align: center;
+      color: #00ff99;
+      margin-bottom: 25px;
+      font-weight: 700;
+      user-select: none;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      color: #a0ffa0;
+      user-select: none;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      background: #222;
+      color: #eee;
+      transition: background 0.3s ease;
+    }
+    input:focus {
+      background: #0f5;
+      color: #000;
+      outline: none;
+      box-shadow: 0 0 10px #00ff99;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      background: #00ff99;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: #000;
+      user-select: none;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #00cc77;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Lunar Hosting</h1>
+    <label for="email">Correo electrónico</label>
+    <input id="email" type="email" placeholder="ejemplo@correo.com" required />
+    <label for="password">Contraseña</label>
+    <input id="password" type="password" placeholder="********" required />
+    <button onclick="iniciarSesion()">Iniciar sesión</button>
+  </div>
+
+  <script>
+    function iniciarSesion() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      if (!email || !password) {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+      // Por ahora no validamos datos, solo redirigimos
+      window.location.href = 'planes.html';
+    }
+  </script>
+</body>
+</html>
